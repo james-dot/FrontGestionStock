@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {ProduitComponent} from './produit/produit.component';
+import {ProduitService} from './produit/produit.service';
 
 import { AppComponent } from './app.component';
 import { ProduitMockService } from './produit/produit.mock.service';
@@ -18,15 +20,18 @@ import {AppRoutingModule} from './app.routing.module';
     NavbarComponent,
     SidebarComponent,
     ContentComponent,
-    DashbordComponent
+    DashbordComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    ProduitMockService
+    ProduitMockService,
+    ProduitService
   ],
   bootstrap: [AppComponent]
 })
