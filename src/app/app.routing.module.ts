@@ -2,9 +2,14 @@ import {NgModule} from '@angular/core';
 import {RouterModule,Routes} from '@angular/router';
 import {ProduitComponent} from './produit/produit.component';
 import {DashbordComponent} from './dashbord/dashbord.component';
+import {ProduitResolver} from './produit/produit.resolver';
 
 export const appRoutes: Routes=[
-        {path : 'produit',component: ProduitComponent},
+        {path : 'produit',component: ProduitComponent,
+           resolve:{
+               produits: ProduitResolver
+           } 
+        },
          {path : 'dashbord',component: DashbordComponent}, 
         {path: '', redirectTo: '/dashbord', pathMatch: 'full'}
 ]
@@ -18,7 +23,8 @@ export const appRoutes: Routes=[
 
 
     ],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers:[ProduitResolver]
 })
 export class AppRoutingModule{
 

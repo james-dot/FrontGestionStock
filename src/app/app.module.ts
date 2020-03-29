@@ -13,6 +13,7 @@ import { ContentComponent } from './content/content.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import {AppRoutingModule} from './app.routing.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +21,16 @@ import {AppRoutingModule} from './app.routing.module';
     NavbarComponent,
     SidebarComponent,
     ContentComponent,
-    DashbordComponent,
+    DashbordComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+      ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
+    
   ],
   providers: [
     ProduitMockService,
