@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 
     private PRODUITS: Produit[] = [];
     constructor(){
-        let p1  = new Produit('Livre',50,20);
-        let p2  = new Produit('Cahier',30,20);
-        let p3 = new Produit('Stylo',20,20);
+        let p1  = new Produit(1,'Livre',50,20);
+        let p2  = new Produit(2,'Cahier',30,20);
+        let p3 = new Produit(3,'Stylo',20,20);
         this.PRODUITS.push(p1);
         this.PRODUITS.push(p2);
         this.PRODUITS.push(p3);
