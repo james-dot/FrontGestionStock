@@ -11,18 +11,29 @@ export const appRoutes: Routes=[
         path : 'login',component: LoginComponent
    }, 
    {
-    path : 'home',component: HomeComponent
-    },      
-
+    path : 'home',
+    component: HomeComponent,
+    children :[
         {
-            path : 'produit',component: ProduitComponent,
+            path : 'produit',
+            component: ProduitComponent,
            resolve:{
                produits: ProduitResolver
-           } 
+           }, 
+           outlet: 'contentOutlet'
         },
+        
          {
-             path : 'dashbord',component: DashbordComponent
+             path : 'dashbord',
+             component: DashbordComponent,
+             outlet: 'contentOutlet'
         }, 
+        
+    ]
+    
+    },      
+
+        
         {
             path: '', redirectTo: '/home', pathMatch: 'full'
         }
@@ -32,7 +43,7 @@ export const appRoutes: Routes=[
     imports: [
         RouterModule.forRoot(
                         appRoutes,
-                        {enableTracing:true}
+                        {enableTracing:false}
                         )
 
 

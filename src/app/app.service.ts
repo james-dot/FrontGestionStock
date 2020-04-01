@@ -11,6 +11,7 @@ authendicated:boolean= false;
   authenticate(credentials,callback){
     if(credentials && credentials.username == 'user' && credentials.password == 'password1'){
         this.authendicated = true;
+        
     }else{
       this.authendicated= false;
     }
