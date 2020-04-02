@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+
   credentials: {
     username: '',
     password: ''
@@ -21,15 +22,16 @@ export class LoginComponent implements OnInit {
               private appService:AppService,
               private router:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.loginForm= this.fb.group({
-      username: ['',Validators.required,Validators.minLength(3)],
-      password: ['',Validators.required,Validators.minLength(3)]
+      username: ['',Validators.compose([Validators.required,Validators.minLength(3)])],
+      password: ['',Validators.compose([Validators.required,Validators.minLength(3)])]
     });
   }
+  
   login(){
       this.appService.authenticate(this.credentials,()=>{
-        this.router.navigateByUrl('/home/(contentOutlet:produit)');//en met des produits actifs dans page Home
+        this.router.navigateByUrl('/home/(contentOutlet:produit)');//en met des produits actifs dans page Home /
       });
   }
 

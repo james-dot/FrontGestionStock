@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
               private router: Router){ }
 
   ngOnInit(){
-        if(!this.appService.authendicated){
+        if(!this.appService.authenticated){
           this.router.navigateByUrl('/login');
         }else{
           this.router.navigateByUrl('/home');
