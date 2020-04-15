@@ -2,22 +2,25 @@
     <ul class="nav nav-pills flex-column">
   
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="[{outlets: { contentOutlet: 'dashbord'}}]" routerLinkActive="active">Dashboard</a>
+            <a class="nav-link" [routerLink]="[{outlets: { contentOutlet: 'dashbord'}}]" 
+                           *ngIf="hasRoleUser()" 
+                           routerLinkActive="active">Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="[{outlets: { contentOutlet: 'produit'}}]" routerLinkActive="active">Produit</a>
+            <a class="nav-link" [routerLink]="[{outlets: { contentOutlet: 'produit'}}]" 
+                            *ngIf="hasRoleUser()"
+                            routerLinkActive="active">Produit</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="[{outlets: { contentOutlet: 'user'}}]" 
+                            *ngIf="hasRoleAdmin()"
+                            routerLinkActive="active">Utilisateurs</a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">Export</a>
         </li>
      </ul>
-     <ul class="nav nav-pills flex-column">
-         <li class="nav-item">
-             <a href="#" class="nav-link">Nav item</a>
-         </li>
-         
-       
-     </ul>
+     
      
      
 </nav>
