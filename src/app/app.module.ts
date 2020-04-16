@@ -23,6 +23,8 @@ import {CookieService} from 'ngx-cookie-service';
 import { UserComponent } from './user/user.component';
 import {StoreModule} from '@ngrx/store';
 import { principalReducer } from './shared/principal.reducer';
+import { UserService } from './user/user.service';
+import { CrudComponent } from './shared/crud/crud.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { principalReducer } from './shared/principal.reducer';
     DashbordComponent,
     LoginComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    CrudComponent
     
   ],
   imports: [
@@ -50,6 +53,7 @@ import { principalReducer } from './shared/principal.reducer';
     ProduitMockService,
     ProduitService,
     AppService,
+    UserService,
     {provide:HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true},
     CookieService
   ],
