@@ -1,9 +1,10 @@
-<!-- pour les produits et user deux pour chaque ils bar et line-->
+<!-- pour les produits bar et line-->
 <div class="row">
     <div class="col-lg-5">
         <app-my-chart
         [type]="'bar'"
         [title]="'Produits par catégorie'"
+        [data]="produitsData"
         >
         </app-my-chart>
     </div>
@@ -11,8 +12,31 @@
         <app-my-chart
         [type]="'line'"
         [title]="'Représentation linéaire des produits'"
+        [data]="produitsData"
         >
         </app-my-chart>
+    </div>
+</div>
+<!-- pour les utilisateurs bar et line-->
+<div class="row">
+    
+  
+    <div class="col-lg-7">
+        <app-my-chart
+        [type]="'line'"
+        [title]="'Représentation linéaire des utilisateurs'"
+        [data]="usersData"
+        >
+        </app-my-chart>
+    </div>
+    <div class="col-lg-5">
+            <app-my-chart
+            [type]="'bar'"
+            [title]="'Utilisateurs par role'"
+            [data]="usersData"
+            >
+            </app-my-chart>
+   
     </div>
 </div>
 
