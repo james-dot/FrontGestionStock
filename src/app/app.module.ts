@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
-
+import {StoreModule} from '@ngrx/store';
+import {ChartModule} from 'angular2-chartjs';
 
 import {ProduitComponent} from './produit/produit.component';
 import {ProduitService} from './produit/produit.service';
@@ -21,10 +21,11 @@ import {AppService} from './app.service';
 import { XhrInterceptor } from './xhr.interceptor';
 import {CookieService} from 'ngx-cookie-service';
 import { UserComponent } from './user/user.component';
-import {StoreModule} from '@ngrx/store';
+
 import { principalReducer } from './shared/principal.reducer';
 import { UserService } from './user/user.service';
 import { CrudComponent } from './shared/crud/crud.component';
+import { MyChartComponent } from './my-chart/my-chart.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CrudComponent } from './shared/crud/crud.component';
     LoginComponent,
     HomeComponent,
     UserComponent,
-    CrudComponent
+    CrudComponent,
+    MyChartComponent
     
   ],
   imports: [
@@ -45,9 +47,9 @@ import { CrudComponent } from './shared/crud/crud.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({principal: principalReducer})
+    StoreModule.forRoot({principal: principalReducer}),
       /* ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}) */
-    
+      ChartModule //pour dashboard 
   ],
   providers: [
     ProduitMockService,
