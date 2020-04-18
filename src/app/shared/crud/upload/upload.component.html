@@ -1,0 +1,23 @@
+
+
+<input type="file" id="uploadFile" name="UploadFile" #fileUploadInput accept=".csv" (change)="selectFile($event)"/>
+<!-- table pour afficher les données récupérer -->
+
+<ng-container *ngIf="dataArray; else emptyData">
+        <table class="table table-hover">
+            <thead>
+                <tr class="thead-light">
+                    <th *ngFor="let dataModel of dataModelListFiltred">{{dataModel.columnReference}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of dataArray">
+                    <td *ngFor="let dataModel of dataModelListFiltred">{{item[dataModel.columnName]}}</td>
+                </tr>
+            </tbody>
+        </table>
+</ng-container>
+
+<ng-template #emptyData>
+    Aucune données à affciher ..!
+</ng-template> 
