@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output,EventEmitter } from '@angular/core';
 import {DataModel} from '../../../shared/data.model';
+import {CrudService} from '../../crud.service';
+
 
 @Component({
   selector: 'app-upload',
@@ -14,15 +16,25 @@ export class UploadComponent implements OnInit {
   @Input()
   dataModelList: DataModel[];//passer data model vers upload.html
 
+  @Output()
+  updateData: EventEmitter<any> = new EventEmitter<any>();
+
   dataArray: any= null;
 
   dataModelListFiltred: any;//??
 
   currentStep= 1;
 
+  selectedStep = 1;//l'étape d'importé et l'envoyer du ficher 
+
   dataFromServer: any = null;
 
   dataSentToServer: boolean = false;
+
+  fileName: string = '';//le nom du fichier importé
+
+  @Input()
+  service: CrudService;//methode addAll
 
   constructor() { }
 
@@ -75,6 +87,7 @@ selectFile($event){
       let fileList = $event.srcElement.files;
       let file = fileList[0];
       if(file && file.name.endsWith(".csv")){
+        this.fileName= file.name;//le nom du fichier
         let input = $event.target;
         let reader = new FileReader();//classe javascript pour role lire des fichiers
         reader.readAsText(input.files[0]);
@@ -94,9 +107,13 @@ selectFile($event){
         };
       }
   }
-  //envoyer les données importé au serveur
+  //envoyer les données importée au serveur
   sendDataToServer(){
-      this.dataSentToServer=true;
-      this.currentStep= 3;
+      this.service.addAll(this.dataArray).subscribe((data)=>{
+        this.dataFromServer=data;
+        this.dataSentToServer=true;
+        this.updateData.emit(data);
+        this.currentStep= 3;
+      });
   }
 }

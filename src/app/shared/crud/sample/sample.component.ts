@@ -14,7 +14,7 @@ export class SampleComponent implements OnInit {
   title: string;//Produits ou Utilisateur
 
   @Input()
-  data: any;//Produit[] ou User[]
+  data: any;//Produit[] ou User[] 
   
   @Input()
   service: CrudService;//ProduitService ou UserService
@@ -27,6 +27,8 @@ export class SampleComponent implements OnInit {
 
   @Input()
   dataModelList: DataModel[];
+
+  
 
   crudForm: FormGroup;
 

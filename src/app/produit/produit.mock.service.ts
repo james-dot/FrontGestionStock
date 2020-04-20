@@ -15,10 +15,6 @@ import {Observable, of} from 'rxjs';
         this.PRODUITS.push(p3);
     }
 
-
-
-   
-
     getAll(): Observable <any> {
           return of(this.PRODUITS);
     }
@@ -32,6 +28,10 @@ import {Observable, of} from 'rxjs';
     }
 
     delete(id): Observable<any>{
+        return of('success');
+    }
+
+    addAll(list): Observable<any>{//.....fichier
         return of('success');
     }
 
