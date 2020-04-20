@@ -9,17 +9,20 @@ import {DataModel} from '../../../shared/data.model';
 export class UploadComponent implements OnInit {
 
   @ViewChild("fileUploadInput") //# reference dans input component.html
-
-  @Input() //??
-  private fileUploadInput: any;
+  fileUploadInput: any;
 
   @Input()
   dataModelList: DataModel[];//passer data model vers upload.html
 
-  @Input()
-  dataArray: any;
+  dataArray: any= null;
 
   dataModelListFiltred: any;//??
+
+  currentStep= 1;
+
+  dataFromServer: any = null;
+
+  dataSentToServer: boolean = false;
 
   constructor() { }
 
@@ -87,7 +90,13 @@ selectFile($event){
           //create data bindArray
           this.dataArray = this.buildDataArray(bindArray,csvRecordsArray);
 
+          this.currentStep++; //l'importation du fichier en passe à la 2 étape
         };
       }
+  }
+  //envoyer les données importé au serveur
+  sendDataToServer(){
+      this.dataSentToServer=true;
+      this.currentStep= 3;
   }
 }
