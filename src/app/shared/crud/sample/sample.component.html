@@ -15,8 +15,6 @@
                       
                         <tr *ngFor="let item of data">
                             <td *ngFor="let dataModel of dataModelList">{{item[dataModel.columnName]}}</td>
-                            <!-- <td>{{produit.quantite}}</td>
-                            <td>{{produit.prixUnitaire}}</td> -->
                             <td>
                                 <button class="btn btn-outline-primary" (click)="operation = 'edit'; selectedItem = item ; ">Edit</button>
                                 <button class="btn btn-outline-danger" (click)="operation = 'remove'; selectedItem= item;">Remove</button>
@@ -52,13 +50,7 @@
                                     formControlName="{{dataModel.columnName}}" [(ngModel)]="selectedItem[dataModel.columnName]"/>
                           
                         </div>
-                     <!--Alert-->
-                         <!-- <div class="alert alert-danger" *ngIf="crudForm.controls['ref'].invalid && 
-                                                        (crudForm.controls['ref'].touched || 
-                                                        crudForm.controls['ref'].dirty) ">
-                        Référence est obligatoire!!
-                         </div> -->
-                    </div>
+                     </div>
                   
                   <button class="btn btn-success" [disabled]="crudForm.pristine || crudForm.invalid"
                         (click)=" operation == 'add' ? add(): update()">
@@ -82,9 +74,7 @@
                             (click)="delete()" [disabled]="!selectedItem.id">Confirmer</button>
               </div>
             </div>
-            <div class="card-footer">
-             <!-- ******  footer -->
-            </div>
+            
           </div>
      </div>
 </div>

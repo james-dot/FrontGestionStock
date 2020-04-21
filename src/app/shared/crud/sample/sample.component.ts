@@ -28,8 +28,6 @@ export class SampleComponent implements OnInit {
   @Input()
   dataModelList: DataModel[];
 
-  
-
   crudForm: FormGroup;
 
   operation: string = 'add';

@@ -95,7 +95,7 @@ selectFile($event){
         reader.onload = (data) =>{
           let csvData = reader.result;
           //console.log(csvData); afficher before
-          let csvRecordsArray = csvData.split(/\r\n|\n/);//???????
+          let csvRecordsArray = null;//csvData.split(/\r\n|\n/);//???????
           //console.log(csvRecordsArray);afficher after split
           let headers = csvRecordsArray && csvRecordsArray.length > 0 ? csvRecordsArray[0].split(";") : [];
           //bing headers with dataModelList

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import {FormGroup,FormBuilder,Validators} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {DataModel} from '../data.model';
 import { CrudService } from '../crud.service';
 
@@ -35,7 +35,6 @@ export class CrudComponent implements OnInit {
     
     ngOnInit(){}
   
-
     dataChanged($event){
       this.data= this.data.concat($event); //ajouter du nouveau à partir d'un fichier plus les anciens 
     }

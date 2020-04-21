@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ProduitService} from '../produit/produit.service';
-import { UserService } from '../user/user.service';
+import {ProductService} from '../product/shared/service/product.service';
+import { UserService } from '../user/shared/service/user.service';
 
 @Component({
   selector: 'app-dashbord',
@@ -19,7 +19,7 @@ export class DashbordComponent implements OnInit {
                 datasets: []
               };
 
-  constructor(private produitService: ProduitService,private userService:UserService) { }
+  constructor(private productService: ProductService,private userService:UserService) { }
 
   ngOnInit(): void {
     
@@ -37,7 +37,7 @@ export class DashbordComponent implements OnInit {
       borderColor: 'rgb(255,99,132)'
     };
 
-    this.produitService.getAll().subscribe(list => list.forEach(produit => {
+    this.productService.getAll().subscribe(list => list.forEach(produit => {
 
           this.produitsData.labels.push(produit.ref);
         
@@ -76,19 +76,14 @@ export class DashbordComponent implements OnInit {
           ));
           
           datasetsUser.data.push(adminLength);
-//** */
           let userLength = 0 ; //const
-      
-        list.forEach(user => user.roles.forEach(role =>{
+          list.forEach(user => user.roles.forEach(role =>{
                     if(role.name == 'ROLE_USER') {
                       userLength++;
             
                       }
         }));
-
         datasetsUser.data.push(userLength);
-
-       
       });
 
     }

@@ -1,5 +1,5 @@
 import {Component,OnInit} from '@angular/core';
-import {AppService} from './app.service';
+import {AppService} from './authentication/shared/service/app.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,17 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  //afficher sidebar oû mettre disparu
+    showHideSidebar: boolean =false;
+    
   constructor(private appService: AppService,
               private router: Router){ }
 
   ngOnInit(){
         if(!this.appService.authenticated){
-          this.router.navigateByUrl('/login');
+          this.router.navigate(['/login']);
         }else{
-          this.router.navigateByUrl('/home');
+          this.router.navigate(['/home']);
         }
   }
+
+  onShowSideBarChange(showHideSidebar){
+       this.showHideSidebar= showHideSidebar;
+    }
 
   
 }

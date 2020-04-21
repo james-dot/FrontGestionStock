@@ -20,7 +20,7 @@
 <div [ngSwitch]="selectedStep">
     <div *ngSwitchCase="1">
     
-        <div *ngIf="dataArray; else emptyData">
+        <div *ngIf="dataArray"> <!-- ; else emptyData -->
             <!-- table pour afficher les données récupérer à partir du fichier.csv-->
                 <table class="table table-hover">
                     <thead>
